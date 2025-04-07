@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB  # 设置单个文件的最大大小
+      max-request-size: 10MB  # 设置整个请求的最大大小
+  datasource:
+    url: jdbc:mysql://localhost:3306/wechat_chatworkshop?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线转驼峰
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+
