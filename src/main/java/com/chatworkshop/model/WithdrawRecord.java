@@ -9,7 +9,7 @@ import java.util.Date;
 @TableName("withdraw_record")
 public class WithdrawRecord {
     private Long id;
-    private Long userId;
+    private String userId;
     private String alipayAccount;
     private String realName;
     private Double amount;

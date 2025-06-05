@@ -13,8 +13,8 @@ public class AlipayAppPayService {
 
     public String createOrderStr(String outTradeNo, String subject, double amount) {
         AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
-        request.setNotifyUrl("https://你的服务地址/notify"); // 支付宝支付结果回调地址（必须公网）
-
+        request.setNotifyUrl("http://106.15.137.235:8080/api/user/payment/notify"); // 支付宝支付结果回调地址（必须公网）
+//        request.putOtherTextParam("app_auth_token", "202504BBc8a2ea44587a496ca1de597feea38X54");//授权token，代调用必传
         String bizContent = "{" +
                 "\"out_trade_no\":\"" + outTradeNo + "\"," +
                 "\"total_amount\":\"" + String.format("%.2f", amount) + "\"," +

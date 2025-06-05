@@ -10,9 +10,10 @@ import java.util.Date;
 @Data
 @TableName("user")  // 映射数据库表名
 public class User {
-    private Long id;
+    private String  id;
     private String username;
     private String passwordHash;
+    private String phone;
     private String inviteCode;
     private String invitedByCode;
     private Integer tryCount;

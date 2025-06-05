@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -15,17 +16,26 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     /**
      * 开通会员：设置会员状态和到期时间，并触发邀请人积分奖励
      */
-    public boolean activateMembership(Long userId) {
+    public boolean activateMembership(String userId,String time) {
         User user = this.getById(userId);
         if (user == null) return false;
 
         user.setIsMember(true);
-
-        // 设置到期时间为当前时间 + 1 年
+        if (Objects.equals(time, "year")){
+            // 设置到期时间为当前时间 + 1 年
         user.setMemberExpireAt(Date.from(
                 LocalDateTime.now().plusYears(1)
                         .atZone(ZoneId.systemDefault()).toInstant()
         ));
+        }else {
+            // 设置到期时间为当前时间 + 1 月
+            user.setMemberExpireAt(Date.from(
+                    LocalDateTime.now().plusMonths(1)
+                            .atZone(ZoneId.systemDefault()).toInstant()
+            ));
+        }
+
+
 
         boolean updated = this.updateById(user);
 
@@ -49,7 +59,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return this.updateById(inviter);
     }
     // 试用期限内，用户可以免费试用
-    public boolean checkAndDeductTrial(Long userId) {
+    public boolean checkAndDeductTrial(String userId) {
         User user = this.getById(userId);
         if (user == null) return false;
 
@@ -69,7 +79,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     // 登录成功后，更新 token
 
 
-    public boolean loginAndUpdateToken(Long userId) {
+    public boolean loginAndUpdateToken(String  userId) {
         User user = this.getById(userId);
         if (user == null) return false;
 

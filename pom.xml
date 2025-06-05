@@ -11,7 +11,7 @@
 	<groupId>com.chatworkshop</groupId>
 	<artifactId>chatworkshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>wechat-chatworkshop-backend</name>
 	<description>wechat-chatworkshop-backend</description>
 	<url/>
@@ -38,8 +38,14 @@
 		<dependency>
 			<groupId>com.alipay.sdk</groupId>
 			<artifactId>alipay-sdk-java</artifactId>
-			<version>3.7.110.ALL</version>
+			<version>4.34.0.ALL</version>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba.fastjson2</groupId>
+			<artifactId>fastjson2</artifactId>
+			<version>2.0.43</version> <!-- 推荐用最新版 -->
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
